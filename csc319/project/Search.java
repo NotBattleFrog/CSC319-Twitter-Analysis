@@ -7,10 +7,7 @@ package csc319.project;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Tiger
- */
+
 public class Search {
     private int totalCount;
     private ArrayList<String> sentence;
