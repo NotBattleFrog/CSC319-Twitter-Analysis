@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author Tiger
- */
+
 public class Main {
     
     private String keyWord;
