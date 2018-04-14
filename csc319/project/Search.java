@@ -7,12 +7,10 @@ package csc319.project;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Tiger
- */
+
 public class Search {
     private int totalCount;
+    private String keyWord;
     private ArrayList<String> sentence;
 
     
@@ -24,7 +22,7 @@ public class Search {
         return sentence;
     }
     
-    private void beginSearch(String keyWord){
+    private void searchKeyWord(String keyWord){
         
     }
     
