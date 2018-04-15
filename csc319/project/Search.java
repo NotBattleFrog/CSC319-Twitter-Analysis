@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class Search {
     private int totalCount;
-    private String keyWord;
     private ArrayList<String> sentence;
 
     
