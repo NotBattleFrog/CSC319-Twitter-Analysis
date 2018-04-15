@@ -21,7 +21,7 @@ public class Search {
         return sentence;
     }
     
-    private void beginSearch(String keyWord){
+    private void searchKeyWord(String keyWord){
         
     }
     
