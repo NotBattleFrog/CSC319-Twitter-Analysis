@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package csc319.project;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,10 +18,6 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
-/**
- *
- * @author Tiger
- */
 public class Search {
     private String keyword;
     private int totalCount;
