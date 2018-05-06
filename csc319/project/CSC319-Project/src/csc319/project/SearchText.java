@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class SearchText extends Search {
 
     private File file;
@@ -28,12 +27,14 @@ public class SearchText extends Search {
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains(keyword)) {
                     count++;
-                    System.out.println(count + ". " + line);
                     searched.add(line);
                 }
             }
-            totalCount = count;
+
             bufferedReader.close();
+            totalCount = count;
+            System.out.println("*************************** Search Successful ***************************");
+
         } catch (IOException ex) {
             System.out.println("Error reading file");
         }
