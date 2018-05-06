@@ -16,10 +16,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author Tiger
- */
 public class FileChooserV1 {
     private JFileChooser filechooser;
     private File file;
