@@ -15,10 +15,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
-/**
- *
- * @author Tiger
- */
+
 public class SearchT4J extends Search {
 
     private String consumerkey, consumersecret, accesstoken, accesstokensecret;
