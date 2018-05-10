@@ -8,6 +8,9 @@ package csc319.project;
 import static csc319.project.Main.sc;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import org.apache.lucene.search.spell.NGramDistance;
 
@@ -30,18 +33,19 @@ public class WordSuggestion {
 
         spellChecker.indexDictionary(
                 new PlainTextDictionary(new File("dictionary.txt")));
-        if (!spellChecker.exist(keyword)) {
+        String key1 = keyword.toLowerCase();
+        String key2 = keyword.toUpperCase();
 
+        if (!spellChecker.exist(key1) && !spellChecker.exist(key2)) {
             int maxSuggest = 5;
-
-            String[] suggestions = spellChecker.
-                    suggestSimilar(keyword, maxSuggest);
-
+            String[] suggest1 = spellChecker.suggestSimilar(key1, maxSuggest);
+            String[] suggest2 = spellChecker.suggestSimilar(key2, maxSuggest);
+            String[] suggestions = addArrays(suggest1, suggest2);
+                    
             if (suggestions != null && suggestions.length > 0) {
                 System.out.println("Did you mean....");
-                for (int i = 1; i < suggestions.length; i++) {
-
-                    System.out.println(i + ". " + suggestions[i]);
+                for (int i = 0; i < suggestions.length; i++) {
+                    System.out.println((i + 1) + ". " + suggestions[i]);
                 }
                 System.out.println("Enter 0 if you wish to use the entered keyword or enter the number of the correct word");
                 int enter = 0;
@@ -52,18 +56,34 @@ public class WordSuggestion {
                         enter = sc.nextInt();
                         if (enter == 0) {
                             setWordSuggest(keyword);
+                        } else if (enter <= suggestions.length) {
+                            spellChecker.setAccuracy(1);
+                            setWordSuggest(suggestions[enter - 1]);
                         } else {
-                            setWordSuggest(suggestions[enter]);
+                            System.out.println("Not an option");
+                            check = !check;
                         }
-                        check = true;
+                        check = !check;
+                    } else {
+                        System.out.println("Enter a valid Integer value");
                     }
+                    sc.nextLine();
                 } while (!check);
             } else {
-                System.out.println("No suggestions found for the word:" + keyword);
+                System.out.println("No suggestions found for the word : " + keyword);
                 setWordSuggest(keyword);
             }
 
+        } else {
+            setWordSuggest(keyword);
         }
+    }
+
+    public String[] addArrays(String[] first, String[] second) {
+        List<String> both = new ArrayList<String>(first.length + second.length);
+        Collections.addAll(both, first);
+        Collections.addAll(both, second);
+        return both.toArray(new String[both.size()]);
     }
 
     public String getWordSuggest() {

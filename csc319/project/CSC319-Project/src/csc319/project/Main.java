@@ -34,10 +34,10 @@ public class Main {
 
         int enter;
         boolean check;
-
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println("------Welcome to Twitter Search Application-----");
         while (true) {
-            System.out.println("---------------------------------------------------------------------------");
-            System.out.println("------Welcome to Twitter Search Application-----");
+
             System.out.println("enter 0 to exit");
             System.out.println("enter 1 to begin searching with Twitter4J");
             System.out.println("enter 2 to begin searching with TextReader");
@@ -51,14 +51,14 @@ public class Main {
                     if (enter >= 4) {
                         System.out.println("Not an option");
                         System.out.println("Please enter 0,1,2,or 3");
+                        check = !check;
                     }
-                    check = true;
+                    check = !check;
                 } else {
-                    sc.nextLine();
                     System.out.println("Enter a valid Integer value");
                 }
+                sc.nextLine();
             } while (!check);
-            sc.nextLine();
             option(enter);
 
         }
@@ -74,15 +74,15 @@ public class Main {
             System.exit(-1);
         } else if (enter == 1 || enter == 2) {
             System.out.print("Please enter a keyword to search : ");
-           
+
             keyword = sc.nextLine();
             try {
                 wordSuggest = new WordSuggestion(keyword);
                 keyword = wordSuggest.getWordSuggest();
             } catch (IOException ex) {
-                
+
             }
-            System.out.println("Searching for the word "+ keyword +"........");
+            System.out.println("Searching for the word " + keyword + "........");
             srch = searchType(enter);
             srch.search(keyword);
             srch.printAllSentence();

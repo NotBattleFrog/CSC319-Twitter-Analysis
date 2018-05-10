@@ -20,6 +20,7 @@ public class SearchText extends Search {
         FileChooserV1 fc = new FileChooserV1();
         fc.choose();
         File chosen = fc.getFile();
+        String [] extract;
         int count = 0;
         String line;
         try {
