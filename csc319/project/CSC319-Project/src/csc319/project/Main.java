@@ -5,6 +5,7 @@
  */
 package csc319.project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -12,6 +13,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
@@ -31,9 +34,10 @@ public class Main {
 
         int enter;
         boolean check;
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println("------Welcome to Twitter Search Application-----");
         while (true) {
-            System.out.println("---------------------------------------------------------------------------");
-            System.out.println("------Welcome to Twitter Search Application-----");
+
             System.out.println("enter 0 to exit");
             System.out.println("enter 1 to begin searching with Twitter4J");
             System.out.println("enter 2 to begin searching with TextReader");
@@ -47,14 +51,14 @@ public class Main {
                     if (enter >= 4) {
                         System.out.println("Not an option");
                         System.out.println("Please enter 0,1,2,or 3");
+                        check = !check;
                     }
-                    check = true;
+                    check = !check;
                 } else {
-                    sc.nextLine();
                     System.out.println("Enter a valid Integer value");
                 }
+                sc.nextLine();
             } while (!check);
-            sc.nextLine();
             option(enter);
 
         }
@@ -64,12 +68,21 @@ public class Main {
     public static void option(int enter) {
         String keyword = null;
         Search srch;
+        WordSuggestion wordSuggest;
         if (enter == 0) {
             System.out.println("Exit.....");
             System.exit(-1);
         } else if (enter == 1 || enter == 2) {
-            System.out.println("Please enter a keyword to search.");
+            System.out.print("Please enter a keyword to search : ");
+
             keyword = sc.nextLine();
+            try {
+                wordSuggest = new WordSuggestion(keyword);
+                keyword = wordSuggest.getWordSuggest();
+            } catch (IOException ex) {
+
+            }
+            System.out.println("Searching for the word " + keyword + "........");
             srch = searchType(enter);
             srch.search(keyword);
             srch.printAllSentence();
@@ -91,13 +104,13 @@ public class Main {
         Iterator it = set.iterator();
         while (it.hasNext()) {
             Map.Entry entry = (Map.Entry) it.next();
-            System.out.println("Keyword : " + entry.getKey() + " , Total tweets : " + entry.getValue());
+            System.out.println("Keyword : " + entry.getKey() + " | Total tweets : " + entry.getValue());
         }
     }
 
     public static Search searchType(int enter) {
         if (enter == 1) {
-            System.out.println("----Search with Twitter$J----");
+            System.out.println("----Search with Twitter4J----");
             return new SearchT4J();
         } else if (enter == 2) {
             System.out.println("----Search with TextReader----");
