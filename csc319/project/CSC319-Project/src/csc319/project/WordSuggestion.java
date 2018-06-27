@@ -25,7 +25,7 @@ public class WordSuggestion {
 
     public WordSuggestion(String keyword) throws IOException {
         Scanner sc = new Scanner(System.in);
-        File dir = new File("C:/Users/Tiger/Documents/NetBeansProjects/CSC319-Project/spellcheck/");
+        File dir = new File("../CSC319-Project/spellcheck/");
 
         Directory directory = FSDirectory.open(dir);
 
