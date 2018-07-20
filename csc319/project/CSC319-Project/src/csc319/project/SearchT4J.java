@@ -20,10 +20,10 @@ public class SearchT4J extends Search {
     private String consumerkey, consumersecret, accesstoken, accesstokensecret;
 
     public void createCredential() {
-        consumerkey = "ur8GJ8VfSdyLqD45DTi3SSCHr";
-        consumersecret = "OCYYAjBi5Todbut5755eHlzcdRAwaXbb08mxvixAtzZWZTyOIf";
-        accesstoken = "990498015604428800-zWOBer5h1ftu0zz16QN9zKhvPGEFSjW";
-        accesstokensecret = "4OdM5lqxqVtr5xd2qPcGKt4zr9Bc6N0TXXhuKhXhf1ZVv";
+        consumerkey = "";
+        consumersecret = "";
+        accesstoken = "";
+        accesstokensecret = "";
     }
 
     public void search(String keyword) {
